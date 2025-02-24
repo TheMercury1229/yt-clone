@@ -1,3 +1,7 @@
+"use client";
+import { trpc } from "@/trpc/trpc-client";
+
 export default function Home() {
-  return <div>Some content</div>;
+  const { data } = trpc.hello.useQuery({ text: "hardy" });
+  return <div>Some content {data?.greeting}</div>;
 }
